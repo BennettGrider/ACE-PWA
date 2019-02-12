@@ -2310,7 +2310,7 @@ textarea.form-control {
   width: 100%;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 476px) { /* CHANGED FROM 576 to 476! Not good practice, but much much easier than messing with media queries for all of these classes */
   .form-inline label {
     display: -ms-flexbox;
     display: flex;

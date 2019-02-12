@@ -1,0 +1,175 @@
+/* COLORS:
+strong orange - FF6B01
+med whitish orange - fffcf0
+ */
+
+
+
+
+
+
+/* Top "navbar" container (above the sticky navbar) */
+#top-nav-container {
+    /* padding: 1vh 1vw; */
+    background-color: #fffcf0;
+}
+
+#top-nav-row {
+    width: 100vw;
+}
+
+#mnr-logo-div {
+    min-width: 112.67px;
+    min-height: 46.67px;
+}
+#mnr-logo-image {
+    width: 90%;
+    max-width: 169px;
+    height: auto;
+    min-width: 112.67px;
+    min-height: 46.67px;
+}
+
+.med-header {
+    color: #FF6B01;
+}
+
+
+
+
+
+/* Nav tab styling */
+
+#nav-tabs-container {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky; /* position: sticky and top: 0 allows navbar to be sticky while still keeping items above it */
+    top: 0;
+    /* width: 100vw; */
+    padding: 2vh 0 0 0;
+    background-color: #fffcf0;
+    /* border: 1px solid #000000; */
+    margin-bottom: 3vh;
+}
+
+.nav-tabs {
+    border-bottom: 2px solid #dee2e6;
+  }
+.nav-tabs .nav-item {
+    margin-bottom: -2px; /* Need to set to the same size at the border-bottom nav-tab element, to hide it under the selected tab */
+}
+.nav-tabs .nav-link {
+    border: 2px solid transparent;
+}
+
+.nav-link {
+    color: #FF6B01;
+}
+.nav-link:hover, .nav-link:focus {
+    text-decoration: none;
+    color: #FF6B01;
+    font-weight: 600;
+  }
+
+  /* Sample point input styling (currently above the nav tabs, but in the same container div so that it stays on the screen) */
+  /* #sample-point-name {
+      display: inline-block;
+      width: 25%;
+  } */
+
+
+  /* General form group styling */
+.form-group {
+    padding: 2vh 2vw;
+}
+  
+.form-control {
+    height: calc(1.8rem + 2px);
+    /* line-height: 1; */
+    margin-left: 2vw;
+}
+
+
+
+
+
+
+
+
+
+/* Custom navbar colors (OLD, POSSIBLY OBSOLETE NAVBAR) */
+.navbar-custom {
+    background-color: #fffcf0;
+    /* border-bottom: 2px solid rgba(255, 107, 1, 0.7); */
+}
+
+/* Changing brand and text colors */
+.navbar-custom .navbar-brand, .navbar-custom .navbar-text {
+    color: #FF6B01;
+}
+
+.navbar-custom .navbar-brand {
+    margin-right: 3rem;
+}
+
+/* Changing link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: #FF6B01;
+}
+
+/* Changing active/hovered link colors */
+.navbar-custom .nav-item.active .nav-link, .navbar-custom .nav-item:hover .nav-link {
+    color: #2d66ff;
+}
+
+/* Changing navbar toggler colors. Have to define our own navbar toggler settings for navbar-custom */
+.navbar-custom .navbar-toggler {
+    background-color: rgba(255,255,255,0.8);
+    border-color: rgba(0, 0, 0, 0.1);
+    margin-left: 2vw;
+  }
+
+.navbar-custom .navbar-toggler-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    content: "";
+    background: no-repeat center center;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+
+  }
+
+.navbar-custom .navbar-toggler:hover {
+    background-color: rgba(255,255,255,0.85);
+}
+
+.nav-button-container {
+    display: flex;
+}
+
+/* Add to homescreen button */
+.add-to-homescreen {
+    font-size: 0.75em;
+    display: flex;
+
+}
+
+
+/* Padded space between navbar and rest of content */
+.extra-space {
+    padding-bottom: 15vh;
+}
+
+
+
+
+
+
+
+/* Download button */
+
+#download-button-container {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}

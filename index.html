@@ -23,22 +23,27 @@
     <meta name="msapplication-TileColor" content="#ff5500">
 
 
-    <nav class="navbar navbar-expand-lg navbar-custom">
-        <h2 class="navbar-brand">Rare Species Lookup</h2>
-        <div id="nav-button-container" class="row">
-            <!-- Using fontawesome icon here. License found at: https://fontawesome.com/license -->
-            <!-- <button class="add-to-homescreen btn btn-success" type="button">
-                <div id="add-to-homescreen-text">
-                    Add to Home Screen <br /> (Mobile only)
-                </div>
-                <div id="add-to-homescreen-icon">
-                    <img src="images/mobile-alt-solid.svg" width="20" />
-                </div>
-            </button> -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+
+
+    <!-- Add an element here that stores the MNR logo image, App title, and maybe add to homescreen button? -->
+    <nav id="top-nav-container" class="navbar navbar-custom">
+        <div id="top-nav-row" class="row">
+            <div id="mnr-logo-div" class="col-3 d-flex align-items-center">
+                <img id="mnr-logo-image" src="images/MNR-logo.png" alt="">
+            </div>
+            <div class="col d-flex align-items-center">
+                <span class="text-nowrap">
+                    <h4 class="med-header text-middle navbar-brand">ACE Wetland App</h4>
+                </span>
+            </div>
+            <!-- Collapse button -->
+            <div class="col d-flex align-items-center justify-content-end">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
         </div>
+        <!-- Collapse content (outside of row div) -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
@@ -64,22 +69,74 @@
 
 
 
+    <!-- Tabbed navbar -->
+    <div id="nav-tabs-container" class="container-fluid">
+        <ul id="nav-tabs-ul" class="nav nav-tabs nav-justified">
+            <li class="nav-item">
+                <a href="#general-tab" class="nav-link active" data-toggle="tab">General</a>
+            </li>
+            <li class="nav-item">
+                <a href="#vegetation-tab" class="nav-link" data-toggle="tab">Vegetation</a>
+            </li>
+            <li class="nav-item">
+                <a href="#hydrology-tab" class="nav-link" data-toggle="tab">Hydrology</a>
+            </li>
+            <li class="nav-item">
+                <a href="#soils-tab" class="nav-link" data-toggle="tab">Soils</a>
+            </li>
+            <li class="nav-item">
+                <a href="#summary-tab" class="nav-link" data-toggle="tab">Summary</a>
+            </li>
+        </ul>
+    </div>
+            
+
+
+
+
 
 
     
 </head>
 <body>
 
-    
+
     <!-- This div is only here to give a bit of padding between the navbar and the rest of the content -->
-    <div class="row extra-space"></div>
+    <!-- <div class="row extra-space"></div> -->
+
+    <div class="tab-content">
+        <div id="general-tab" class="tab-pane active">
+            <form class="form-inline justify-content-start">
+                <div class="form-group">
+                    <label for="sample-point-id">Sample Point ID:</label>
+                    <input type="text" id="sample-point-id" class="form-control">
+                </div>
+            </form>
+        </div>
+        <div id="vegetation-tab" class="tab-pane container">
+            <p>VEG GOES HERE</p>
+        </div>
+        <div id="hydrology-tab" class="tab-pane container">
+            <p>HYDRO GOES HERE</p>
+        </div>
+        <div id="soils-tab" class="tab-pane container">
+            <p>SOILS GOES HERE</p>
+        </div>
+        <div id="summary-tab" class="tab-pane container">
+            <p>SUMMARY GOES HERE</p>
+        </div>
+    </div>
 
 
-        
+
+
+
+    <div id="download-button-container" class="container">
+        <div class="row justify-content-end">
+            <button id="download-data-button" class="btn btn-primary">Download Form</button>
+        </div>
+    </div>
     
-
-
-
 
 
 
