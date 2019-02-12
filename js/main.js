@@ -23,8 +23,13 @@ if('serviceWorker' in navigator) {
 
 
 
-
-
+// Adding the date picker to the input field and setting the current date/options
+$('#sampling-date').datepicker('setDate', new Date());
+$('#sampling-date').datepicker({
+    format: 'mm/dd/yyyy',
+    todayBtn: 'linked',
+    todayHighlight: true
+});
 
 
 
@@ -32,41 +37,37 @@ if('serviceWorker' in navigator) {
 
 // Saving form info to a text file. Clicks the generated download link automatically
 // TODO: refactor, add functionality for all data, properly format it as well
-(function () {
-    var textFile = null,
-      makeTextFile = function (text) {
-        var data = new Blob([text], {type: 'text/plain'});
+
+var textFile = null;
+makeTextFile = function (text) {
+    var data = new Blob([text], {type: 'text/plain'});
+
+    // If replacing a previously generated file, need to manually revoke the object URL to avoid memory leaks.
+    if (textFile !== null) {
+        window.URL.revokeObjectURL(textFile);
+    }
+    textFile = window.URL.createObjectURL(data);
+    return textFile;
+}
+
+
+var downloadButton = document.getElementById('download-data-button');
+var sample_point = document.getElementById('sample-point-id');
+
+downloadButton.addEventListener('click', function () {
+    var dlLink = document.createElement('a');
+    dlLink.setAttribute('download', 'form_data.txt');
+    dlLink.href = makeTextFile(sample_point.value);
+    document.body.appendChild(dlLink);
+
+    // Wait for link to be added to the document
+    window.requestAnimationFrame(function () {
+        var event = new MouseEvent('click');
+        dlLink.dispatchEvent(event);
+        document.body.removeChild(dlLink);
+        });
     
-        // If we are replacing a previously generated file we need to
-        // manually revoke the object URL to avoid memory leaks.
-        if (textFile !== null) {
-          window.URL.revokeObjectURL(textFile);
-        }
-    
-        textFile = window.URL.createObjectURL(data);
-    
-        return textFile;
-      };
-    
-    
-      var create = document.getElementById('download-data-button'),
-        textbox = document.getElementById('sample-point-id');
-    
-      create.addEventListener('click', function () {
-        var link = document.createElement('a');
-        link.setAttribute('download', 'form_data.txt');
-        link.href = makeTextFile(textbox.value);
-        document.body.appendChild(link);
-    
-        // wait for the link to be added to the document
-        window.requestAnimationFrame(function () {
-          var event = new MouseEvent('click');
-          link.dispatchEvent(event);
-          document.body.removeChild(link);
-            });
-        
-      }, false);
-})();
+}, false);
     
     
 

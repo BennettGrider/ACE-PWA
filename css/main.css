@@ -89,7 +89,15 @@ med whitish orange - fffcf0
 }
 
 
+/* Row */
+/* #general-form-row {
+    margin-right: 15px;
+    margin-left: 30px;
+} */
 
+.radio-div {
+    margin-left: 25px;
+}
 
 
 
@@ -160,6 +168,8 @@ med whitish orange - fffcf0
 .extra-space {
     padding-bottom: 15vh;
 }
+
+
 
 
 
