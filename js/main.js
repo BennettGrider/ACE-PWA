@@ -73,51 +73,68 @@ downloadButton.addEventListener('click', function () {
 
 
 
-// Testing out saving with filesaver
-var dlButton2 = document.getElementById('dl-data-btn-filesaver');
-dlButton2.addEventListener('click', function () {
-    var sample_point_2 = document.getElementById('sample-point-id');
-    console.log(sample_point_2.value);
-    var blob = new Blob([sample_point_2.value], {type: 'text/plain;charset=utf-8'});
-    saveAs(blob, "hello world.txt")
-});
+// // Testing out saving with filesaver
+// var dlButton2 = document.getElementById('dl-data-btn-filesaver');
+// dlButton2.addEventListener('click', function () {
+//     var sample_point_2 = document.getElementById('sample-point-id');
+//     console.log(sample_point_2.value);
+//     var blob = new Blob([sample_point_2.value], {type: 'text/plain;charset=utf-8'});
+//     saveAs(blob, "hello world.txt")
+// });
 
     
 
 
-// // Testing out data persisting on localstorage. This is done because iOS resets the page when you leave the window
-
-
+// Testing out data persisting on localstorage. This is done because iOS resets the page when you leave the window, and also in case the user exist the page or hits the back button or some such nonsense
+// TODO: switch from localstorage to indexeddb. Currently this is a very long and tedious hack, but for this version of the PWA will work fine. If the app will switch to React/React Native, this will be obsolete anyway.
 
 function exitFunction(e) {
     console.log('Leaving page!'); // Testing that the function excutes on leaving the page
     // var selectedCounty2 = $('.county-selection-dropdown').val(); // Should allow the variable to be defined outside of the prior function
-    let sample_point = document.getElementById('sample-point-id');
-    if (sample_point != '') {
-        window.localStorage.setItem('samplePoint', sample_point);
-        console.log(window.localStorage.getItem('samplePoint'));
-    }
+    // let sample_point = document.getElementById('sample-point-id');
+    var sample_data = {
+        pointID: '',
+        sampleDate: '',
+        investigators: '',
+        projectSite: '',
+        applicantOwner: '',
+        latitude: '',
+        longitude: '',
+    };
+    sample_data.pointID = $('#sample-point-id').val();
+    sample_data.sampleDate = $('#sampling-date').val();
+    sample_data.investigators = $('#investigators').val();
+    sample_data.projectSite = $('#project-site').val();
+    sample_data.applicantOwner = $('#applicant-owner').val();
+    sample_data.latitude = $('#latitude').val();
+    sample_data.longitude = $('#longitude').val();
+
+    window.localStorage.setItem('sampleData', JSON.stringify(sample_data)); // Have to convert arrays or objects to strings
     
 }
 
 function pageLoadFunction(e) {
-    var load_sample_point = window.localStorage.getItem('samplePoint');
-    console.log('Loaded sample point name: ', load_sample_point);
-    if (load_sample_point != '') {
-        $('sample-point-id').val(load_sample_point);
-    }
+    var load_sample_data = JSON.parse(window.localStorage.getItem('sampleData'));
+    console.log('Loaded sample data: ', load_sample_data);
+    $('#sample-point-id').val(load_sample_data.pointID);
+    $('#sampling-date').val(load_sample_data.sampleDate);
+    $('#investigators').val(load_sample_data.investigators);
+    $('#project-site').val(load_sample_data.projectSite);
+    $('#applicant-owner').val(load_sample_data.applicantOwner);
+    $('#latitude').val(load_sample_data.latitude);
+    $('#longitude').val(load_sample_data.longitude);
 }
 
 
-// // TESTING OUT LOCALSTORAGE SAVE ON IOS
-// if ('onpagehide' in window) {
-//     window.addEventListener('pagehide', exitFunction, false);
-// } else {
-//     window.addEventListener('unload', exitFunction, false);
-// }
+// TESTING OUT LOCALSTORAGE SAVE ON IOS
+if ('onpagehide' in window) {
+    window.addEventListener('pagehide', exitFunction, false);
+} else {
+    window.addEventListener('unload', exitFunction, false);
+}
 
-// window.addEventListener('pageshow', pageLoadFunction, false);
-// // window.addEventListener('load', pageLoadFunction, false);
+window.addEventListener('pageshow', pageLoadFunction, false);
+// window.addEventListener('load', pageLoadFunction, false);
 
 
 
