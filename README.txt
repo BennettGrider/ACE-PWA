@@ -6,6 +6,9 @@ This project is a wetland data collection PWA.
 **** TODO ****
 **************
 
+-Implement redux or some sort of persistent storage? Localstorage or IndexedDB.
+-Fix onpageload/leave events for Safari iOS
+-Possibly check if user has internet connection, and if so, tries to send data to a server? Or tries to email? Upload to google drive?
 -Add service worker functionality to JS
 -Create general layout of app (HTML, CSS)
 -Take relevant JS from current wetland app page
